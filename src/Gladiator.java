@@ -13,6 +13,7 @@ abstract class Gladiator {
         this.atkHigh = 20;
         this.atkLow = 5;
     }
+    abstract void castSpell();
 
     public int attackDamage(){
         return Utils.randRange(this.getAtkHigh(), this.getAtkLow());
