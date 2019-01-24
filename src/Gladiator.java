@@ -7,6 +7,7 @@ abstract class Gladiator {
     public int mana;
     public int maxMana;
     public int manaCost;
+    public int manaRefillRate;
     public int defense;
     public int atkLow;
     public int atkHigh;
@@ -20,6 +21,7 @@ abstract class Gladiator {
         this.mana = 100;
         this.maxMana = 100;
         this.manaCost = 10;
+        this.manaRefillRate = 10;
         this.defense = 0;
         this.atkHigh = 20;
         this.atkLow = 5;
@@ -27,6 +29,13 @@ abstract class Gladiator {
 
     }
     abstract void castSpell(Gladiator enemy);
+
+    abstract void rest();
+
+    public void attack(Gladiator enemy){
+        enemy.health -= this.attackDamage() - enemy.defense;
+        this.mana += Utils.randRange(15,5);
+    }
 
     abstract void levelUp();
 
@@ -47,5 +56,4 @@ abstract class Gladiator {
         this.health = this.maxHealth;
         this.mana = this.maxMana;
     }
-
 }
