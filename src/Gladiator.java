@@ -1,5 +1,6 @@
 //Default Gladiator
 abstract class Gladiator {
+    public String name;
     public int health;
     public int level;
     public int mana;
@@ -9,12 +10,13 @@ abstract class Gladiator {
     public int atkHigh;
     public String spellName;
 
-    Gladiator(){
+    Gladiator(String name){
+        this.name = name;
         this.health = 100;
         this.level = 1;
         this.mana = 100;
         this.manaCost = 10;
-        this.defense = 100;
+        this.defense = 0;
         this.atkHigh = 20;
         this.atkLow = 5;
         this.spellName = "";
