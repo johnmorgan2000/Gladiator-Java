@@ -2,8 +2,10 @@
 abstract class Gladiator {
     public String name;
     public int health;
+    public int maxHealth;
     public int level;
     public int mana;
+    public int maxMana;
     public int manaCost;
     public int defense;
     public int atkLow;
@@ -13,8 +15,10 @@ abstract class Gladiator {
     Gladiator(String name){
         this.name = name;
         this.health = 100;
+        this.maxHealth = 100;
         this.level = 1;
         this.mana = 100;
+        this.maxMana = 100;
         this.manaCost = 10;
         this.defense = 0;
         this.atkHigh = 20;
@@ -37,6 +41,11 @@ abstract class Gladiator {
         } else {
             return false;
         }
+    }
+
+    public void regenerate(){
+        this.health = this.maxHealth;
+        this.mana = this.maxMana;
     }
 
 }
