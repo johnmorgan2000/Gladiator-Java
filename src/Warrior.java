@@ -13,4 +13,11 @@ public class Warrior extends Gladiator{
         enemy.setHealth(enemy.getHealth()-this.getAtkHigh());
         enemy.setMana(enemy.getMana()-enemy.getManaCost());
     }
+
+    @Override
+    void levelUp() {
+
+    }
+
+
 }

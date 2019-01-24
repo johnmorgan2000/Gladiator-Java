@@ -1,6 +1,7 @@
 //Default Gladiator
 abstract class Gladiator {
     private int health;
+    private int level;
     private int mana;
     private int manaCost;
     private int defense;
@@ -10,6 +11,7 @@ abstract class Gladiator {
 
     Gladiator(){
         this.health = 100;
+        this.level = 1;
         this.mana = 100;
         this.manaCost = 10;
         this.defense = 100;
@@ -19,6 +21,8 @@ abstract class Gladiator {
 
     }
     abstract void castSpell(Gladiator enemy);
+
+    abstract void levelUp();
 
     public int attackDamage(){
         return Utils.randRange(this.getAtkHigh(), this.getAtkLow());
@@ -87,5 +91,13 @@ abstract class Gladiator {
 
     public void setManaCost(int manaCost) {
         this.manaCost = manaCost;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }
