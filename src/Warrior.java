@@ -2,6 +2,7 @@ public class Warrior extends Gladiator{
     public Warrior(String name) {
         super(name);
         this.mana = 40;
+        this.maxMana= 40;
         this.manaCost= 30;
         this.defense = 4;
         this.atkHigh= 20;
@@ -15,6 +16,10 @@ public class Warrior extends Gladiator{
         enemy.mana -= enemy.manaCost;
     }
 
+    public void rest(){
+        this.mana += this.manaRefillRate;
+    }
+
     @Override
     void levelUp() {
         this.level += 1;
@@ -23,9 +28,6 @@ public class Warrior extends Gladiator{
         this.defense += 3;
         this.atkHigh += 2;
         this.atkLow += 2;
-
-
-
     }
 
 
