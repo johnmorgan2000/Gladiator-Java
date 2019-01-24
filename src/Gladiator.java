@@ -2,18 +2,23 @@
 abstract class Gladiator {
     private int health;
     private int mana;
+    private int manaCost;
     private int defense;
     private int atkLow;
     private int atkHigh;
+    private String spellName;
 
     Gladiator(){
         this.health = 100;
         this.mana = 100;
+        this.manaCost = 10;
         this.defense = 100;
         this.atkHigh = 20;
         this.atkLow = 5;
+        this.spellName = "";
+
     }
-    abstract void castSpell();
+    abstract void castSpell(Gladiator enemy);
 
     public int attackDamage(){
         return Utils.randRange(this.getAtkHigh(), this.getAtkLow());
@@ -68,5 +73,19 @@ abstract class Gladiator {
         this.defense = defense;
     }
 
+    public String getSpellName() {
+        return spellName;
+    }
 
+    public void setSpellName(String spellName) {
+        this.spellName = spellName;
+    }
+
+    public int getManaCost() {
+        return manaCost;
+    }
+
+    public void setManaCost(int manaCost) {
+        this.manaCost = manaCost;
+    }
 }
