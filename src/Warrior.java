@@ -23,8 +23,8 @@ public class Warrior extends Gladiator{
     @Override
     void levelUp() {
         this.level += 1;
-        this.health += 10;
-        this.mana += 5;
+        this.maxHealth += 10;
+        this.maxMana += 5;
         this.defense += 3;
         this.atkHigh += 2;
         this.atkLow += 2;
