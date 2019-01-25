@@ -43,7 +43,7 @@ abstract class Gladiator {
         return Utils.randRange(atkHigh, atkLow);
     }
 
-    public boolean isDead(){
+    public Boolean isDead(){
         if (health <= 0) {
             health = 0;
             return true;
