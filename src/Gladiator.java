@@ -30,11 +30,20 @@ abstract class Gladiator {
     }
     abstract void castSpell(Gladiator enemy);
 
-    abstract void rest();
+    public void rest(){
+        this.mana += this.manaRefillRate;
+        if (this.mana > this.maxMana){
+            this.mana = this.maxMana;
+        }
+
+    }
 
     public void attack(Gladiator enemy){
         enemy.health -= this.attackDamage() - enemy.defense;
         this.mana += Utils.randRange(15,5);
+        if (this.mana > this.maxMana){
+            this.mana = this.maxMana;
+        }
     }
 
     abstract void levelUp();
