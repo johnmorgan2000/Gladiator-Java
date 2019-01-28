@@ -13,11 +13,7 @@ public class Warrior extends Gladiator{
     @Override
     public void castSpell(Gladiator enemy) {
         enemy.health -= this.atkHigh;
-        enemy.mana -= enemy.manaCost;
-    }
-
-    public void rest(){
-        this.mana += this.manaRefillRate;
+        this.mana -= this.manaCost;
     }
 
     @Override
@@ -29,6 +25,4 @@ public class Warrior extends Gladiator{
         this.atkHigh += 2;
         this.atkLow += 2;
     }
-
-
 }
