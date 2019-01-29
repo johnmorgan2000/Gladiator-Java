@@ -13,15 +13,27 @@ abstract class Enemy {
         return gladiator;
     }
 
-    public static Gladiator generateNextEnemy(Gladiator player, int round){
+    public static void adjustToDiffculty(Gladiator gladiator,int difficulty){
+        int healthHandicap = 40;
+        for (int i=0; i<difficulty; i++){
+            healthHandicap -= 10;
+        }
+        gladiator.maxHealth -= healthHandicap;
+    }
+
+    public static Gladiator generateNextEnemy(Gladiator player, int round, int difficulty){
         String name = Utils.nameGenerator();
         int numberOfClasses = 1;
         int classNum = Utils.randRange(numberOfClasses, 1);
 
         if (round % 10 == 0){
-            return makeEnemy("(Boss) "+ name, round+1, classNum);
+            Gladiator g =  makeEnemy("(Boss) "+ name, round+1, classNum);
+            adjustToDiffculty(g, difficulty);
+            return g;
         }
-        return makeEnemy(name, round, classNum);
+        Gladiator g =  makeEnemy(name, round, classNum);
+        adjustToDiffculty(g, difficulty);
+        return g;
     }
 
     public static void botChoice(Gladiator enemy, Gladiator player, ArrayList<String> battleLog){
