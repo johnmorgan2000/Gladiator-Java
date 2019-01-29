@@ -3,10 +3,8 @@ import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-
         Scanner reader = new Scanner(System.in);
         gameLoader(reader);
-
     }
 
     public static void gameLoader(Scanner reader){
@@ -35,9 +33,10 @@ public class Program {
     public static void beginGame(Gladiator player, Scanner reader){
         int round = player.level;
         ArrayList<String> battleLog = new ArrayList<>();
+        int difficulty = chooseDifficulty(reader);
 
         while (!player.isDead()) {
-            Gladiator enemy = Enemy.generateNextEnemy(player, round);
+            Gladiator enemy = Enemy.generateNextEnemy(player, round, difficulty);
             player.regenerate();
             enemy.regenerate();
             enemy.health -= 50;
@@ -158,5 +157,16 @@ public class Program {
                 return new Warrior(name);
             }
         }
+    }
+
+    public static int chooseDifficulty(Scanner reader){
+        while (true){
+            System.out.println("Choose a difficulty. 1-3 (Easiest)-(Hardest): ");
+            int difficulty = reader.nextInt();
+            if (difficulty <= 3 && difficulty >= 1){
+                return difficulty;
+            }
+        }
+
     }
 }
