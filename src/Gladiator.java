@@ -1,5 +1,7 @@
+import java.io.*;
+
 //Default Gladiator
-abstract class Gladiator {
+abstract class Gladiator implements Serializable {
     public String name;
     public int health;
     public int maxHealth;
@@ -65,4 +67,5 @@ abstract class Gladiator {
         this.health = this.maxHealth;
         this.mana = this.maxMana;
     }
+
 }
