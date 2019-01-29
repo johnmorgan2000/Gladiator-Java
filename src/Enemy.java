@@ -27,16 +27,16 @@ abstract class Enemy {
     public static void botChoice(Gladiator enemy, Gladiator player, ArrayList<String> battleLog){
         if (player.health <= enemy.atkLow){
             enemy.attack(player);
-            battleLog.add(enemy.name + " Attacked" + player.name);
+            battleLog.add(enemy.name + " Attacked " + player.name);
         } else if (enemy.mana >= enemy.manaCost){
             enemy.castSpell(player);
-            battleLog.add(enemy.name + " Casted" + enemy.spellName);
+            battleLog.add(enemy.name + " Casted " + enemy.spellName);
         }else if (enemy.mana + enemy.manaRefillRate >= enemy.manaCost ){
             enemy.mana += enemy.manaRefillRate;
             battleLog.add(enemy.name + " Rested");
         }else{
             enemy.attack(player);
-            battleLog.add(enemy.name + " Attacked" + player.name);
+            battleLog.add(enemy.name + " Attacked " + player.name);
         }
     }
 
