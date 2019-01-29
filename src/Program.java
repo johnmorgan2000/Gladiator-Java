@@ -1,3 +1,4 @@
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -39,7 +40,6 @@ public class Program {
             Gladiator enemy = Enemy.generateNextEnemy(player, round, difficulty);
             player.regenerate();
             enemy.regenerate();
-            enemy.health -= 50;
             battle(player, reader, enemy, battleLog);
             round++;
             player.levelUp();
@@ -112,22 +112,22 @@ public class Program {
     public static void playerBattleChoice(Gladiator player, Scanner reader, Gladiator enemy, ArrayList<String> battleLog){
         while (true){
             System.out.printf("[1] Attack [2] Cast Spell (%s) [3] Rest [4] Save/Quit: ", player.manaCost);
-            int choice = reader.nextInt();
-            if (choice == 1){
+            String choice = reader.nextLine();
+            if (choice.equals("1")){
                 player.attack(enemy);
                 battleLog.add(player.name + " Attacked " + enemy.name);
                 break;
-            }else if (choice == 2){
+            }else if (choice.equals("2")){
                 if (player.mana >= player.manaCost){
                     player.castSpell(enemy);
                     battleLog.add(player.name + " Casted " + player.spellName);
                     break;
                 }
-            }else if (choice == 3){
+            }else if (choice.equals("3")){
                 player.rest();
                 battleLog.add(player.name+ " Rested");
                 break;
-            }else if (choice == 4){
+            }else if (choice.equals("4")){
                 boolean result =  GladiatorSaver.save(player);
                 if (result){
                     System.exit(0);
@@ -162,10 +162,14 @@ public class Program {
     public static int chooseDifficulty(Scanner reader){
         while (true){
             System.out.println("Choose a difficulty. 1-3 (Easiest)-(Hardest): ");
-            int difficulty = reader.nextInt();
-            if (difficulty <= 3 && difficulty >= 1){
-                return difficulty;
+            String response = reader.nextLine();
+            if (response.matches("-?\\d+")){
+                int difficulty = Integer.parseInt(response);
+                if (difficulty <= 3 && difficulty >= 1){
+                    return difficulty;
+                }
             }
+
         }
 
     }
