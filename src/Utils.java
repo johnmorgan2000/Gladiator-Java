@@ -9,11 +9,11 @@ public class Utils {
 
     public static String nameGenerator(){
         ArrayList<String> title = new ArrayList<>();
-        title.add("Master");
-        title.add("Silly");
-        title.add("Sensei");
-        title.add("Mighty");
-        title.add("Holy");
+        title.add("Master ");
+        title.add("Silly ");
+        title.add("Sensei ");
+        title.add("Mighty ");
+        title.add("Holy ");
 
         ArrayList<String> name = new ArrayList<>();
         name.add("Killy");
@@ -28,9 +28,6 @@ public class Utils {
         return title.get(indexOne) + name.get(indexTwo);
 
     }
-
-
-
 
     static boolean flipCoin(){
         switch(randRange(2,1)){
